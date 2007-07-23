@@ -1,8 +1,10 @@
 %define name	vigra
-%define version	1.4.0
+%define version	1.5.0
 %define release	%mkrel 1
 %define major	2
 %define libname	%mklibname %{name} %{major}
+%define olddevel %libname-devel
+%define libnamedevel %mklibname %{name} -d
 
 Name:		%{name}
 Version:	%{version}
@@ -34,13 +36,13 @@ Provides:       lib%{name} = %{version}-%{release}
 %description -n %{libname}
 This package contains the library needed to run %{name}.
 
-%package -n %{libname}-devel
+%package -n %{libnamedevel}
 Summary:        Development header files for %{name}
 Group:          Development/C
 Requires:       %{libname} = %{version}
 Provides:       lib%{name}-devel = %{version}-%{release}
-
-%description -n %{libname}-devel
+Obsoletes:	%{olddevel}
+%description -n %{libnamedevel}
 Libraries, include files and other resources you can use to develop
 %{name} applications.
 
@@ -80,13 +82,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n %{libname}
 %defattr (-,root,root)
-%doc LICENSE README
+%doc LICENSE.txt README.txt
 %{_libdir}/*.so.*
 
-%files -n %{libname}-devel
+%files -n %{libnamedevel}
 %defattr (755,root,root,755)
 %multiarch %{multiarch_bindir}/vigra-config
-%{_bindir}/*
+%{_bindir}/vigra-config
 %defattr (644,root,root,755)
 %doc %{_docdir}/%name
 %{_includedir}/%{name}
