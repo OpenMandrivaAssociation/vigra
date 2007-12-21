@@ -14,6 +14,7 @@ License:	MIT
 Group:		Development/C
 Source0:	http://kogs-www.informatik.uni-hamburg.de/~koethe/vigra/%{name}%{version}.tar.bz2
 URL:		http://kogs-www.informatik.uni-hamburg.de/~koethe/vigra/
+BuildRoot:	%{_tmppath}/%{name}-root
 BuildRequires:	zlib-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
