@@ -1,6 +1,6 @@
 %define name	vigra
 %define version	1.5.0
-%define release	%mkrel 6
+%define release	%mkrel 7
 %define major	2
 %define libname	%mklibname %{name} %{major}
 %define olddevel %libname-devel
