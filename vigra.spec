@@ -1,6 +1,6 @@
 %define name	vigra
 %define version	1.5.0
-%define release	%mkrel 7
+%define release	%mkrel 8
 %define major	2
 %define libname	%mklibname %{name} %{major}
 %define olddevel %libname-devel
@@ -91,7 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n %{libnamedevel}
 %defattr (755,root,root,755)
-%multiarch %{multiarch_bindir}/vigra-config
+%{multiarch_bindir}/vigra-config
 %{_bindir}/vigra-config
 %defattr (644,root,root,755)
 %doc %{_docdir}/%name
