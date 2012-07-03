@@ -6,7 +6,7 @@
 Summary:	Generic Programming for Computer Vision
 Name:		vigra
 Version:	1.8.0
-Release:	%mkrel 2
+Release:	3
 License:	MIT
 Group:		Development/C
 URL:		http://kogs-www.informatik.uni-hamburg.de/~koethe/vigra/
