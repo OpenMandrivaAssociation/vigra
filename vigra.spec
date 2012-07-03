@@ -12,6 +12,7 @@ Group:		Development/C
 URL:		http://kogs-www.informatik.uni-hamburg.de/~koethe/vigra/
 Source0:	http://kogs-www.informatik.uni-hamburg.de/~koethe/vigra/%{name}-%{version}-src.tar.gz
 Patch0:		vigra-1.8.0.lib_suffix.patch
+Patch1:		vigra-1.8.0.gcc47.patch
 BuildRequires:	boost-devel
 #BuildRequires:	boost-python ?
 BuildRequires:	cmake
@@ -68,6 +69,7 @@ Libraries, include files and other resources you can use to develop
 
 %setup -q -n %{name}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %cmake
