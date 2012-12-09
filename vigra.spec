@@ -110,3 +110,57 @@ rm -rf %{buildroot}
 %files -n python-vigra
 %defattr(-, root, root,-)
 %{python_sitearch}/vigra
+
+
+%changelog
+* Tue Jul 03 2012 Crispin Boylan <crisb@mandriva.org> 1.8.0-3
++ Revision: 807909
+- Patch1: gcc 4.7 build fix from fedora
+- Rebuild for new boost
+
+* Thu Dec 22 2011 Oden Eriksson <oeriksson@mandriva.com> 1.8.0-2
++ Revision: 744418
+- rebuilt against libtiff.so.5
+
+* Sun Oct 02 2011 Oden Eriksson <oeriksson@mandriva.com> 1.8.0-1
++ Revision: 702476
+- 1.8.0
+- sync a bit with fedora
+- attempt to relink against libpng15.so.15
+
+* Mon May 02 2011 Oden Eriksson <oeriksson@mandriva.com> 1.5.0-8
++ Revision: 661755
+- multiarch fixes
+
+* Sat Dec 04 2010 Oden Eriksson <oeriksson@mandriva.com> 1.5.0-7mdv2011.0
++ Revision: 608124
+- rebuild
+
+* Sun Jan 10 2010 Oden Eriksson <oeriksson@mandriva.com> 1.5.0-6mdv2010.1
++ Revision: 488807
+- rebuilt against libjpeg v8
+
+* Wed Sep 09 2009 Thierry Vignaud <tv@mandriva.org> 1.5.0-5mdv2010.0
++ Revision: 434673
+- rebuild
+- rebuild
+
+* Wed Jul 30 2008 Thierry Vignaud <tv@mandriva.org> 1.5.0-3mdv2009.0
++ Revision: 255552
+- rebuild
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+* Fri Dec 21 2007 Olivier Blin <blino@mandriva.org> 1.5.0-1mdv2008.1
++ Revision: 136570
+- restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Mon Jul 23 2007 Couriousous <couriousous@mandriva.org> 1.5.0-1mdv2008.0
++ Revision: 54863
+- 1.5.0
+- Import vigra
+
