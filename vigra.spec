@@ -19,9 +19,9 @@ BuildRequires:	cmake
 BuildRequires:	doxygen
 BuildRequires:	fftw-devel > 3
 BuildRequires:	hdf5-devel
-BuildRequires:	libjpeg-devel
-BuildRequires:	libpng-devel
-BuildRequires:	libtiff-devel
+BuildRequires:	jpeg-devel
+BuildRequires:	png-devel
+BuildRequires:	tiff-devel
 BuildRequires:	OpenEXR-devel
 BuildRequires:	python-devel
 BuildRequires:	python-numpy
