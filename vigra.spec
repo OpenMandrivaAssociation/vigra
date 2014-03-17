@@ -43,7 +43,7 @@ Group: Development/C
 Requires: %{libname} >= %{version}
 Provides: lib%{name}-devel = %{version}-%{release}
 Provides: %{name}-devel = %{version}-%{release}
-Obsoletes: %{mklibname %{name} -d 2}
+Obsoletes: %{mklibname %{name} -d 4}
 
 %description -n %{libnamedevel}
 Libraries, include files and other resources you can use to develop
