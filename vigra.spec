@@ -5,7 +5,7 @@
 
 Name:           vigra
 Version:        1.10.0
-Release:        1
+Release:        2
 Summary:        Generic Programming for Computer Vision
 License:        MIT
 Group:          Development/C
@@ -25,7 +25,7 @@ application without thereby giving up execution speed.
 Summary: Development tools for programs which will use the vigra library
 Group: Development/C
 Requires: vigra = %{version}-%{release}
-Requires: libjpeg-devel libtiff-devel libpng-devel zlib-devel fftw-devel >= 3
+Requires: jpeg-devel tiff-devel png-devel zlib-devel fftw-devel >= 3
 Requires: hdf5-devel boost-devel python-sphinx python-numpy
 
 %description devel
