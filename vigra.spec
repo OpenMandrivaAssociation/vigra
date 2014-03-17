@@ -1,4 +1,4 @@
-%define major   2
+%define major   5
 %define libname %mklibname %{name} %{major}
 %define olddevel %libname-devel
 %define libnamedevel %mklibname %{name} -d
@@ -21,25 +21,33 @@ structures. By using template techniques similar to those in the C++ Standard
 Template Library, you can easily adapt any VIGRA component to the needs of your
 application without thereby giving up execution speed.
 
-%package devel
-Summary: Development tools for programs which will use the vigra library
-Group: Development/C
-Requires: vigra = %{version}-%{release}
-Requires: jpeg-devel tiff-devel png-devel zlib-devel fftw-devel >= 3
-Requires: hdf5-devel boost-devel python-sphinx python-numpy
-
-%description devel
-The vigra-devel package includes the header files necessary for developing
-programs that use the vigra library.
-
-%package python
+%package -n python-vigra
 Summary: Python interface for the vigra computer vision library
-Group: Development/Python
-Requires: vigra = %{version}-%{release}
-Requires: python-numpy-devel 
+Requires: %{libname} >= %{version}-%{release}
+Requires: python-numpy
 
-%description python
+%description -n python-vigra
 The vigra-python package provides python bindings for vigra
+
+%package -n %{libname}
+Summary: Main library for %{name}
+Group: System/Libraries
+Provides: lib%{name} = %{version}-%{release}
+
+%description -n %{libname}
+This package contains the library needed to run %{name}.
+
+%package -n %{libnamedevel}
+Summary: Development header files for %{name}
+Group: Development/C
+Requires: %{libname} >= %{version}
+Provides: lib%{name}-devel = %{version}-%{release}
+Provides: %{name}-devel = %{version}-%{release}
+Obsoletes: %{mklibname %{name} -d 2}
+
+%description -n %{libnamedevel}
+Libraries, include files and other resources you can use to develop
+%{name} applications.
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -50,14 +58,16 @@ The vigra-python package provides python bindings for vigra
 %make VERBOSE=1
 # cleanup
 rm -f doc/vigranumpy/.buildinfo
+rm -f %{buildroot}/%{_datadir}/doc/vigra/vigranumpy/.buildingo
+rm -f %{buildroot}/%{_datadir}/doc/vigra-devel/vigranumpy/.buildingo
 
 %install
 %makeinstall_std -C build
 
-%files
-%{_libdir}/libvigraimpex.so.*
+%files -n %{libname}
+%{_libdir}/libvigraimpex.so.%{major}*
 
-%files devel
+%files -n %{libnamedevel}
 %doc %{_datadir}/doc/%{name}
 %{_bindir}/vigra-config
 %{_includedir}/vigra
@@ -66,5 +76,5 @@ rm -f doc/vigranumpy/.buildinfo
 %{_libdir}/vigranumpy/VigranumpyConfig.cmake
 %doc doc/vigra doc/vigranumpy
 
-%files python
+%files -n python-vigra
 %{python_sitearch}/vigra
