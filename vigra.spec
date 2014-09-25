@@ -53,7 +53,8 @@ Libraries, include files and other resources you can use to develop
 %setup -q -n %{name}-%{version}
 
 %build
-%cmake -DDOCINSTALL=share/doc/%{name}
+export CXXFLAGS=-ftemplate-depth-1024
+%cmake -DDOCINSTALL=share/doc/%{name} -DPYTHON_EXECUTABLE=/usr/bin/python2
 
 %make VERBOSE=1
 # cleanup
@@ -77,4 +78,4 @@ rm -f %{buildroot}/%{_datadir}/doc/vigra-devel/vigranumpy/.buildingo
 %doc doc/vigra doc/vigranumpy
 
 %files -n python-vigra
-%{python_sitearch}/vigra
+%{python2_sitearch}/vigra
