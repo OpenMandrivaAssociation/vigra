@@ -12,7 +12,7 @@ Group:          Development/C
 Source0:        http://kogs-www.informatik.uni-hamburg.de/~koethe/vigra/%{name}-%{version}-src-with-docu.tar.gz
 URL:            http://kogs-www.informatik.uni-hamburg.de/~koethe/vigra/
 BuildRequires:  zlib-devel jpeg-devel libpng-devel libtiff-devel fftw-devel >= 3
-BuildRequires:  cmake hdf5-devel boost-devel doxygen python-sphinx python-numpy-devel
+BuildRequires:  cmake hdf5-devel boost-devel doxygen python-sphinx python2-numpy-devel
 
 %description
 VIGRA stands for "Vision with Generic Algorithms". It's a novel computer vision
@@ -24,7 +24,7 @@ application without thereby giving up execution speed.
 %package -n python-vigra
 Summary: Python interface for the vigra computer vision library
 Requires: %{libname} >= %{version}-%{release}
-Requires: python-numpy
+Requires: python2-numpy
 
 %description -n python-vigra
 The vigra-python package provides python bindings for vigra
