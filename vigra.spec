@@ -5,14 +5,24 @@
 
 Name:           vigra
 Version:        1.10.0
-Release:        8
+Release:        9
 Summary:        Generic Programming for Computer Vision
 License:        MIT
 Group:          Development/C
 Source0:        http://kogs-www.informatik.uni-hamburg.de/~koethe/vigra/%{name}-%{version}-src-with-docu.tar.gz
 URL:            http://kogs-www.informatik.uni-hamburg.de/~koethe/vigra/
-BuildRequires:  zlib-devel jpeg-devel libpng-devel libtiff-devel fftw-devel >= 3
-BuildRequires:  cmake hdf5-devel boost-devel doxygen python-sphinx python2-numpy-devel
+BuildRequires:  zlib-devel
+BuildRequires:	jpeg-devel
+BuildRequires:	libpng-devel
+BuildRequires:	libtiff-devel
+BuildRequires:	fftw-devel >= 3
+BuildRequires:	cmake
+BuildRequires:	hdf5-devel
+BuildRequires:	boost-devel
+BuildRequires:	doxygen
+BuildRequires:	python-sphinx
+BuildRequires:	python2-numpy-devel
+BuildRequires:	pkgconfig(OpenEXR)
 
 %description
 VIGRA stands for "Vision with Generic Algorithms". It's a novel computer vision
@@ -54,7 +64,7 @@ Libraries, include files and other resources you can use to develop
 
 %build
 export CXXFLAGS=-ftemplate-depth-1024
-%cmake -DDOCINSTALL=share/doc/%{name} -DPYTHON_EXECUTABLE=/usr/bin/python2
+%cmake -DDOCINSTALL=share/doc/%{name} -DPYTHON_EXECUTABLE=/usr/bin/python2 -DWITH_OPENEXR=ON
 
 %make VERBOSE=1
 # cleanup
