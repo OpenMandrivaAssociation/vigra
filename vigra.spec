@@ -1,16 +1,16 @@
-%define major 5
+%define major 11
 %define libname %mklibname %{name} %{major}
 %define olddevel %libname-devel
 %define libnamedevel %mklibname %{name} -d
 
 Name:           vigra
-Version:        1.10.0
-Release:        10
+Version:        1.11.0
+Release:        1
 Summary:        Generic Programming for Computer Vision
 License:        MIT
 Group:          Development/C
-Source0:        http://kogs-www.informatik.uni-hamburg.de/~koethe/vigra/%{name}-%{version}-src-with-docu.tar.gz
-URL:            http://kogs-www.informatik.uni-hamburg.de/~koethe/vigra/
+Source0:	https://github.com/ukoethe/vigra/releases/download/Version-1-11-0/vigra-%{version}-src.tar.gz
+URL:            http://ukoethe.github.io/vigra
 BuildRequires:  zlib-devel
 BuildRequires:	jpeg-devel
 BuildRequires:	libpng-devel
