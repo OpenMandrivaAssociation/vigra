@@ -2,10 +2,11 @@
 %define libname %mklibname %{name} %{major}
 %define olddevel %libname-devel
 %define libnamedevel %mklibname %{name} -d
+%bcond_with python
 
 Name:           vigra
 Version:        1.11.0
-Release:        1
+Release:        2
 Summary:        Generic Programming for Computer Vision
 License:        MIT
 Group:          Development/C
@@ -21,8 +22,11 @@ BuildRequires:	hdf5-devel
 BuildRequires:	boost-devel
 BuildRequires:	doxygen
 BuildRequires:	python-sphinx
-BuildRequires:	python2-numpy-devel
 BuildRequires:	pkgconfig(OpenEXR)
+%if %{with python}
+BuildRequires:	pkgconfig(python2)
+BuildRequires:	python2-numpy-devel
+%endif
 
 %description
 VIGRA stands for "Vision with Generic Algorithms". It's a novel computer vision
@@ -64,7 +68,10 @@ Libraries, include files and other resources you can use to develop
 
 %build
 export CXXFLAGS=-ftemplate-depth-1024
-%cmake -DDOCINSTALL=share/doc/%{name} -DPYTHON_EXECUTABLE=/usr/bin/python2 -DWITH_OPENEXR=ON
+%cmake -DDOCINSTALL=share/doc/%{name} -DPYTHON_EXECUTABLE=/usr/bin/python2 -DWITH_OPENEXR=ON \
+%if %{without python}
+	-DWITH_VIGRANUMPY=0
+%endif
 
 %make VERBOSE=1
 # cleanup
@@ -84,8 +91,10 @@ rm -f %{buildroot}/%{_datadir}/doc/vigra-devel/vigranumpy/.buildingo
 %{_includedir}/vigra
 %{_libdir}/libvigraimpex.so
 %{_libdir}/vigra
-%{_libdir}/vigranumpy/VigranumpyConfig.cmake
 %doc doc/vigra doc/vigranumpy
 
+%if %{with python}
 %files -n python-vigra
 %{python2_sitearch}/vigra
+%{_libdir}/vigranumpy/VigranumpyConfig.cmake
+%endif
