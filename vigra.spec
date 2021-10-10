@@ -4,18 +4,18 @@
 %define libnamedevel %mklibname %{name} -d
 %bcond_with python
 
-Name:           vigra
-Version:        1.11.1
-Release:        5
-Summary:        Generic Programming for Computer Vision
-License:        MIT
-Group:          Development/C
+Name:		vigra
+Version:	1.11.1
+Release:	6
+Summary:	Generic Programming for Computer Vision
+License:	MIT
+Group:		Development/C
 Source0:	https://github.com/ukoethe/vigra/releases/download/Version-%(echo %{version}|sed -e 's,\.,-,g')/vigra-%{version}-src.tar.gz
-URL:            http://ukoethe.github.io/vigra
-BuildRequires:  zlib-devel
-BuildRequires:	jpeg-devel
-BuildRequires:	libpng-devel
-BuildRequires:	libtiff-devel
+URL:		http://ukoethe.github.io/vigra
+BuildRequires:	pkgconfig(zlib)
+BuildRequires:	pkgconfig(libjpeg)
+BuildRequires:	pkgconfig(libpng)
+BuildRequires:	pkgconfig(libtiff-4)
 BuildRequires:	fftw-devel >= 3
 BuildRequires:	cmake
 BuildRequires:	hdf5-devel
@@ -36,35 +36,35 @@ Template Library, you can easily adapt any VIGRA component to the needs of your
 application without thereby giving up execution speed.
 
 %package -n python-vigra
-Summary: Python interface for the vigra computer vision library
-Requires: %{libname} >= %{version}-%{release}
-Requires: python2-numpy
+Summary:	Python interface for the vigra computer vision library
+Requires:	%{libname} >= %{version}-%{release}
+Requires:	python-numpy
 
 %description -n python-vigra
-The vigra-python package provides python bindings for vigra
+The vigra-python package provides python bindings for vigra.
 
 %package -n %{libname}
-Summary: Main library for %{name}
-Group: System/Libraries
-Provides: lib%{name} = %{version}-%{release}
+Summary:	Main library for %{name}
+Group:		System/Libraries
+Provides:	lib%{name} = %{version}-%{release}
 
 %description -n %{libname}
 This package contains the library needed to run %{name}.
 
 %package -n %{libnamedevel}
-Summary: Development header files for %{name}
-Group: Development/C
-Requires: %{libname} >= %{version}
-Provides: lib%{name}-devel = %{version}-%{release}
-Provides: %{name}-devel = %{version}-%{release}
-Obsoletes: %{mklibname %{name} -d 4}
+Summary:	Development header files for %{name}
+Group:		Development/C
+Requires:	%{libname} >= %{version}
+Provides:	lib%{name}-devel = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
+Obsoletes:	%{mklibname %{name} -d 4}
 
 %description -n %{libnamedevel}
 Libraries, include files and other resources you can use to develop
 %{name} applications.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -n %{name}-%{version} -p1
 
 %build
 export CXXFLAGS=-ftemplate-depth-1024
@@ -73,14 +73,14 @@ export CXXFLAGS=-ftemplate-depth-1024
 	-DWITH_VIGRANUMPY=0
 %endif
 
-%make VERBOSE=1
+%make_build VERBOSE=1
 # cleanup
 rm -f doc/vigranumpy/.buildinfo
 rm -f %{buildroot}/%{_datadir}/doc/vigra/vigranumpy/.buildingo
 rm -f %{buildroot}/%{_datadir}/doc/vigra-devel/vigranumpy/.buildingo
 
 %install
-%makeinstall_std -C build
+%make_install -C build
 
 %files -n %{libname}
 %{_libdir}/libvigraimpex.so.%{major}*
