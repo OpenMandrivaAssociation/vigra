@@ -6,12 +6,13 @@
 
 Name:		vigra
 Version:	1.11.1
-Release:	6
+Release:	7
 Summary:	Generic Programming for Computer Vision
 License:	MIT
 Group:		Development/C
 Source0:	https://github.com/ukoethe/vigra/releases/download/Version-%(echo %{version}|sed -e 's,\.,-,g')/vigra-%{version}-src.tar.gz
 URL:		http://ukoethe.github.io/vigra
+Patch0:		vigra-openexr3.patch
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(libjpeg)
 BuildRequires:	pkgconfig(libpng)
