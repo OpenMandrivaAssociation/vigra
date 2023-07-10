@@ -1,12 +1,12 @@
 %define major 11
-%define libname %mklibname %{name} %{major}
-%define olddevel %libname-devel
+%define oldlibname %mklibname %{name} %{major}
+%define libname %mklibname %{name}
 %define libnamedevel %mklibname %{name} -d
 %bcond_with python
 
 Name:		vigra
 Version:	1.11.1
-Release:	11
+Release:	12
 Summary:	Generic Programming for Computer Vision
 License:	MIT
 Group:		Development/C
@@ -25,8 +25,8 @@ BuildRequires:	doxygen
 BuildRequires:	python-sphinx
 BuildRequires:	pkgconfig(OpenEXR)
 %if %{with python}
-BuildRequires:	pkgconfig(python2)
-BuildRequires:	python2-numpy-devel
+BuildRequires:	pkgconfig(python3)
+BuildRequires:	python-numpy-devel
 %endif
 
 %description
@@ -48,6 +48,7 @@ The vigra-python package provides python bindings for vigra.
 Summary:	Main library for %{name}
 Group:		System/Libraries
 Provides:	lib%{name} = %{version}-%{release}
+%rename %{oldlibname}
 
 %description -n %{libname}
 This package contains the library needed to run %{name}.
@@ -69,7 +70,7 @@ Libraries, include files and other resources you can use to develop
 
 %build
 export CXXFLAGS=-ftemplate-depth-1024
-%cmake -DDOCINSTALL=share/doc/%{name} -DPYTHON_EXECUTABLE=/usr/bin/python2 -DWITH_OPENEXR=ON \
+%cmake -DDOCINSTALL=share/doc/%{name} -DPYTHON_EXECUTABLE=/usr/bin/python -DWITH_OPENEXR=ON \
 %if %{without python}
 	-DWITH_VIGRANUMPY=0
 %endif
@@ -96,6 +97,6 @@ rm -f %{buildroot}/%{_datadir}/doc/vigra-devel/vigranumpy/.buildingo
 
 %if %{with python}
 %files -n python-vigra
-%{python2_sitearch}/vigra
+%{python_sitearch}/vigra
 %{_libdir}/vigranumpy/VigranumpyConfig.cmake
 %endif
