@@ -4,16 +4,17 @@
 %define libnamedevel %mklibname %{name} -d
 %bcond_with python
 
+%define dashedversion %(echo %{version} |sed -e 's,\\.,-,g')
+
 Name:		vigra
-Version:	1.11.1
-Release:	13
+Version:	1.11.2
+Release:	1
 Summary:	Generic Programming for Computer Vision
 License:	MIT
 Group:		Development/C
-Source0:	https://github.com/ukoethe/vigra/releases/download/Version-%(echo %{version}|sed -e 's,\.,-,g')/vigra-%{version}-src.tar.gz
+Source0:	https://github.com/ukoethe/vigra/archive/refs/tags/Version-%{dashedversion}.tar.gz
 URL:		http://ukoethe.github.io/vigra
-Patch0:		vigra-openexr3.patch
-Patch1:		vigra-1.11.1-hdf5-1.14.patch
+#Patch1:		vigra-1.11.1-hdf5-1.14.patch
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(libjpeg)
 BuildRequires:	pkgconfig(libpng)
@@ -67,7 +68,7 @@ Libraries, include files and other resources you can use to develop
 %{name} applications.
 
 %prep
-%autosetup -n %{name}-%{version} -p1
+%autosetup -n %{name}-Version-%{dashedversion} -p1
 
 %build
 export CXXFLAGS=-ftemplate-depth-1024
@@ -94,7 +95,7 @@ rm -f %{buildroot}/%{_datadir}/doc/vigra-devel/vigranumpy/.buildingo
 %{_includedir}/vigra
 %{_libdir}/libvigraimpex.so
 %{_libdir}/vigra
-%doc doc/vigra doc/vigranumpy
+%doc doc/vigra
 
 %if %{with python}
 %files -n python-vigra
