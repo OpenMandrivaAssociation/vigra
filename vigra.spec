@@ -8,7 +8,7 @@
 
 Name:		vigra
 Version:	1.11.2
-Release:	1
+Release:	2
 Summary:	Generic Programming for Computer Vision
 License:	MIT
 Group:		Development/C
