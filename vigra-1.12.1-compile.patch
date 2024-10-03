@@ -1,0 +1,12 @@
+diff -up vigra-Version-1-12-1/include/vigra/multi_iterator_coupled.hxx.omv~ vigra-Version-1-12-1/include/vigra/multi_iterator_coupled.hxx
+--- vigra-Version-1-12-1/include/vigra/multi_iterator_coupled.hxx.omv~	2024-10-04 00:35:57.889692926 +0200
++++ vigra-Version-1-12-1/include/vigra/multi_iterator_coupled.hxx	2024-10-04 00:36:14.479865514 +0200
+@@ -490,7 +490,7 @@ class CoupledScanOrderIterator<N, HANDLE
+     CoupledScanOrderIterator operator--(int)
+     {
+         CoupledScanOrderIterator res(*this);
+-        --this;
++        --(*this);
+         return res;
+     }
+ 

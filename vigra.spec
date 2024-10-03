@@ -7,14 +7,13 @@
 %define dashedversion %(echo %{version} |sed -e 's,\\.,-,g')
 
 Name:		vigra
-Version:	1.11.2
-Release:	3
+Version:	1.12.1
+Release:	1
 Summary:	Generic Programming for Computer Vision
 License:	MIT
 Group:		Development/C
 Source0:	https://github.com/ukoethe/vigra/archive/refs/tags/Version-%{dashedversion}.tar.gz
 URL:		http://ukoethe.github.io/vigra
-#Patch1:		vigra-1.11.1-hdf5-1.14.patch
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(libjpeg)
 BuildRequires:	pkgconfig(libpng)
@@ -30,6 +29,9 @@ BuildRequires:	pkgconfig(OpenEXR)
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	python-numpy-devel
 %endif
+
+%patchlist
+vigra-1.12.1-compile.patch
 
 %description
 VIGRA stands for "Vision with Generic Algorithms". It's a novel computer vision
