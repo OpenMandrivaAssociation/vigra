@@ -13,7 +13,7 @@ Summary:	Generic Programming for Computer Vision
 License:	MIT
 Group:		Development/C
 Source0:	https://github.com/ukoethe/vigra/archive/refs/tags/Version-%{dashedversion}.tar.gz
-URL:		http://ukoethe.github.io/vigra
+URL:		https://ukoethe.github.io/vigra
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(libjpeg)
 BuildRequires:	pkgconfig(libpng)
