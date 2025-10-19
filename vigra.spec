@@ -31,7 +31,6 @@ BuildRequires:	python-numpy-devel
 %endif
 
 %patchlist
-#vigra-1.12.1-compile.patch
 
 %description
 VIGRA stands for "Vision with Generic Algorithms". It's a novel computer vision
