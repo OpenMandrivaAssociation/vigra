@@ -7,7 +7,7 @@
 %define dashedversion %(echo %{version} |sed -e 's,\\.,-,g')
 
 Name:		vigra
-Version:	1.12.2
+Version:	1.12.4
 Release:	1
 Summary:	Generic Programming for Computer Vision
 License:	MIT
@@ -69,7 +69,7 @@ Libraries, include files and other resources you can use to develop
 %{name} applications.
 
 %prep
-%autosetup -n %{name}-Version-%{dashedversion} -p1
+%autosetup -n vigra-Version-1-12-4 -p1
 
 %build
 export CXXFLAGS=-ftemplate-depth-1024
